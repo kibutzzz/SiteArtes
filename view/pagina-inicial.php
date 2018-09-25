@@ -14,11 +14,30 @@ $controller = new ControllerPaginaInicial();
         ?>
     </head>
     <body>
+        <?php
+        foreach($controller->getProjects() as $project){
+            echo $project['nome'];
+            echo "<br>";
+            echo $project['resumo'];
+            echo "<br>";
+            echo $project['situacao'];
+            echo "<br>";
+            echo $project['turma'];
+            echo "<br>";
+            echo $project['data_cadastro'];
+            echo "<br>";
+            echo "<br>";
+                
+            echo "°asdòAáw";
+        }
+       
+        ?>
 
     </body>
     <?php
         foreach($controller->getScripts() as $script) {
             echo $script;
         }
+        $controller->closeConnection();
     ?>
 </html>
