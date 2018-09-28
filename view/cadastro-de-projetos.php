@@ -1,10 +1,12 @@
+<!DOCTYPE html>
 <?php
 require "../controllers/ControllerCadastroDeProjetos.php";
 $controller = new ControllerCadastroDeProjetos();
 ?>
-<html>
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><?= $controller->getPageTitle() ?></title>
         <link rel="shortcut icon" type="image/png" href=<?= $controller->getIconPath() ?>/>
         <?php
