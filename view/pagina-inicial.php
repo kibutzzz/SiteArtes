@@ -14,30 +14,30 @@ $controller = new ControllerPaginaInicial();
         ?>
     </head>
     <body>
-        <?php
-        foreach($controller->getProjects() as $project){
-            echo $project['nome'];
-            echo "<br>";
-            echo $project['resumo'];
-            echo "<br>";
-            echo $project['situacao'];
-            echo "<br>";
-            echo $project['turma'];
-            echo "<br>";
-            echo $project['data_cadastro'];
-            echo "<br>";
-            echo "<br>";
+        <div class="container">
+            <?php
+            foreach ($controller->getProjects() as $project) {
                 
-            echo "°asdòAáw";
-        }
-       
-        ?>
+                ?>
 
+                <div class="card mt-4" >
+                    <!--<img class="card-img-top" src="#" alt="foto do projeto">-->
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $project['nome'] ?></h5>
+                        <p class="card-text"><?= $project['resumo']?></p>
+                        <a href="#" class="btn btn-primary">Visualizar projeto</a>
+                    </div>
+                </div>
+
+                <?php
+            }
+            ?>
+        </div>
     </body>
     <?php
-        foreach($controller->getScripts() as $script) {
-            echo $script;
-        }
-        $controller->closeConnection();
+    foreach ($controller->getScripts() as $script) {
+        echo $script;
+    }
+    $controller->closeConnection();
     ?>
 </html>
