@@ -26,4 +26,6 @@ $controller = new ControllerPaginaInicial();
     }
     $controller->closeConnection();
     ?>
+    
+    //asdfghjkl
 </html>
