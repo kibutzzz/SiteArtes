@@ -14,8 +14,9 @@ $controller = new ControllerPaginaInicial();
         ?>
     </head>
     <body>
-        <div class="container">
+        
             <?php require "/menu-navegacao.php"; ?>
+        <div class="container">
             <?php require "/feed-projetos.php"; ?>
         </div>
     </body>
