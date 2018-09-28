@@ -15,23 +15,8 @@ $controller = new ControllerPaginaInicial();
     </head>
     <body>
         <div class="container">
-            <?php
-            foreach ($controller->getProjects() as $project) {
-                
-                ?>
-
-                <div class="card mt-4" >
-                    <!--<img class="card-img-top" src="#" alt="foto do projeto">-->
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $project['nome'] ?></h5>
-                        <p class="card-text"><?= $project['resumo']?></p>
-                        <a href="#" class="btn btn-primary">Visualizar projeto</a>
-                    </div>
-                </div>
-
-                <?php
-            }
-            ?>
+            <?php require "/menu-navegacao.php"; ?>
+            <?php require "/feed-projetos.php"; ?>
         </div>
     </body>
     <?php
