@@ -18,7 +18,7 @@ Class Connection {
 
     private function connect() {
         $this->connection = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-        
+        $this->connection->set_charset("utf8");
           
         if ($this->connection->connect_errno) {
             echo "Erro de conexão: " . $this->connection->connect_error;
