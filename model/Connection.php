@@ -74,7 +74,7 @@ Class Connection {
 
         $this->executeQuery();
         $last_id = $this->connection->insert_id;
-        
+
         for ($i = 0; $i < sizeof($member_names); $i ++) {
             $this->sql = "INSERT INTO " . TABLE_PARTICIPANTES . "("
                     . PARTICIPANTES_NOME . ", "
@@ -88,6 +88,23 @@ Class Connection {
             var_dump($this->sql);
             $this->executeQuery();
         }
+    }
+
+    public function getProjectById($id) {
+        $this->sql = "SELECT * FROM projetos WHERE id = $id";
+
+        $projectInfo["project_details"] = $this->executeQuery()->fetch_assoc();
+
+        $this->sql = "SELECT nome, email, lider FROM participantes WHERE projetos_id = $id";
+        $memberInfo = [];
+        $members = $this->executeQuery();
+        while ($member = $members->fetch_assoc()){
+            array_push($memberInfo, $member);
+        }
+
+        $projectInfo["member_details"] = $memberInfo;
+
+        return $projectInfo;
     }
 
 }
