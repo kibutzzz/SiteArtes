@@ -115,4 +115,7 @@ Class Connection {
        
     }
 
+//    TODO bucar dados do banco
+//    SELECT projetos.nome, projetos.situacao, participantes.nome FROM projetos INNER JOIN participantes ON participantes.projetos_id = projetos.id  WHERE participantes.lider = 1 
+    
 }
