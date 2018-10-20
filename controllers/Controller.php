@@ -6,6 +6,7 @@ class Controller {
     private $pageTitle;
     private $scripts;
     private $styles;
+    public $session_handler;
 
     function __construct() {
         $this->scripts = [
@@ -17,6 +18,8 @@ class Controller {
         ];
         $this->pageTitle = "A parede";
         $this->iconPath = "../img/logo.png";
+        require '../controllers/session/SessionHandler.php';
+        $this->session_handler = new Session();
     }
     function setPageTitle($pageTitle) {
         $this->pageTitle = $pageTitle;
