@@ -1,21 +1,25 @@
 <?php
 
-if(isset($_POST)){
+if ($_POST) {
     $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_SPECIAL_CHARS);
     $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
-    
+
     var_dump($login);
     var_dump($senha);
-    
+
     require "../../model/Connection.php";
     $connection = new Connection();
-    
-    if($connection->check_login($login, $senha)){
-        session_start();
-        $_SESSION['usuario'] = $login;
-        var_dump($_SESSION);
+
+    if ($connection->check_login($login, $senha)) {
+        require "../session/SessionHandler.php";
+        $session_handler = new Session();
+        $session_handler->addValue('login', $login);
+        $session_handler->addValue('logado', TRUE);
+        $connection->closeConnection();
+        header("location: ../../view/administracao.php");
     } else {
-        header("location: ../../view/login.php?message=". urlencode("Usuario ou senha incorretos!"));
+        $connection->closeConnection();
+        header("location: ../../view/login.php?message=" 
+                . urlencode("Usuario ou senha incorretos!"));
     }
-    
 }
