@@ -4,10 +4,15 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="./cadastro-de-projetos.php">Cadastro</a>
       </li>      
     </ul>
+      <ul class="navbar-nav ">
+          <li class="nav-item">
+              <a class="nav-link" href="./login.php">Login</a>
+          </li>
+      </ul>
   </div>
 </nav>
