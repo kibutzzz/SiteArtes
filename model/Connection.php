@@ -106,5 +106,13 @@ Class Connection {
 
         return $projectInfo;
     }
+    
+    function check_login($user, $password){
+        $this->sql = "SELECT * FROM administrador WHERE usuario = '$user' "
+                . "AND senha = '$password'";
+        
+        return $this->executeQuery()->num_rows > 0;
+       
+    }
 
 }
