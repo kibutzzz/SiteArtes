@@ -6,30 +6,42 @@ Class Connection {
     private $sql;
 
     public function __construct() {
+
+//        database info
         define("DB_NAME", 'parede-database');
         define("DB_PASSWORD", '');
         define("DB_HOST", 'localhost');
         define("DB_USER", 'root');
+
+//      tables info
         define("TABLE_PROJETOS", 'projetos');
+        define("TABLE_ADMINISTRADOR", "administrador");
+        define("TABLE_PARTICIPANTES", "participantes");
+
+//        projetos columns
         define("PROJETOS_NOME", 'nome');
         define("PROJETOS_TURMA", 'turma');
         define("PROJETOS_RESUMO", 'resumo');
         define("PROJETOS_SITUACAO", 'situacao');
         define("PROJETOS_DATA_EXPOSICAO", 'data_exposicao');
         define("PROJETOS_DATA_CADASTRO", 'data_cadastro');
-        define("TABLE_PARTICIPANTES", "participantes");
+
+//        participantes columns
         define("PARTICIPANTES_NOME", "nome");
         define("PARTICIPANTES_EMAIL", "email");
         define("PARTICIPANTES_LIDER", "lider");
         define("PARTICIPANTES_PROJETOS_ID", "projetos_id");
 
-
+//        admin columns
+        define("ADMINISTRADOR_USUARIO", "usuario");
+        define("ADMINISTRADOR_SENHA", "senha");
 
 
         $this->connect();
     }
 
     private function connect() {
+
         $this->connection = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $this->connection->set_charset("utf8");
 
@@ -91,14 +103,18 @@ Class Connection {
     }
 
     public function getProjectById($id) {
-        $this->sql = "SELECT * FROM projetos WHERE id = $id";
+        $this->sql = "SELECT * FROM " . TABLE_PROJETOS . " WHERE id = $id";
 
         $projectInfo["project_details"] = $this->executeQuery()->fetch_assoc();
 
-        $this->sql = "SELECT nome, email, lider FROM participantes WHERE projetos_id = $id";
+        $this->sql = "SELECT " . PARTICIPANTES_NOME . ", "
+                . PARTICIPANTES_EMAIL . ", "
+                . PARTICIPANTES_LIDER . " FROM "
+                . TABLE_PARTICIPANTES
+                . " WHERE " . PARTICIPANTES_PROJETOS_ID . " = $id";
         $memberInfo = [];
         $members = $this->executeQuery();
-        while ($member = $members->fetch_assoc()){
+        while ($member = $members->fetch_assoc()) {
             array_push($memberInfo, $member);
         }
 
@@ -106,16 +122,15 @@ Class Connection {
 
         return $projectInfo;
     }
-    
-    function check_login($user, $password){
-        $this->sql = "SELECT * FROM administrador WHERE usuario = '$user' "
-                . "AND senha = '$password'";
-        
+
+    function check_login($user, $password) {
+        $this->sql = "SELECT * FROM " . TABLE_ADMINISTRADOR
+                . " WHERE " . ADMINISTRADOR_USUARIO . " = '$user' "
+                . "AND " . ADMINISTRADOR_SENHA . " = '$password'";
+
         return $this->executeQuery()->num_rows > 0;
-       
     }
 
 //    TODO bucar dados do banco
 //    SELECT projetos.nome, projetos.situacao, participantes.nome FROM projetos INNER JOIN participantes ON participantes.projetos_id = projetos.id  WHERE participantes.lider = 1 
-    
 }
