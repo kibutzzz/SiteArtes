@@ -42,7 +42,7 @@ $controller = new ControllerAdministracao();
                             <td>banco</td>
                         </tr>
                         <?php
-//                        SELECT projetos.nome, projetos.situacao, participantes.nome FROM projetos INNER JOIN participantes ON participantes.projetos_id = projetos.id  WHERE participantes.lider = 1 
+//                        TODO consulta aos dados do banco
                         ?>
                     </tbody>
                 </table>
