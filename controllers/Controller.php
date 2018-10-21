@@ -17,7 +17,7 @@ class Controller {
             '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">',
         ];
         $this->pageTitle = "A parede";
-        $this->iconPath = "../img/logo.png";
+        $this->iconPath = "../img/favicon.ico";
         require '../controllers/session/SessionHandler.php';
         $this->session_handler = new Session();
     }
