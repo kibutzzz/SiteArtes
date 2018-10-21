@@ -8,7 +8,7 @@ $controller = new ControllerAdministracao();
         <title><?= $controller->getPageTitle() ?></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link rel="shortcut icon" type="image/png" href="<?= $controller->getIconPath() ?>"/>
         <?php
         foreach ($controller->getStyles() as $style) {
             echo $style;

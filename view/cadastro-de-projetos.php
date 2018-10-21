@@ -3,7 +3,7 @@
 require "../controllers/ControllerCadastroDeProjetos.php";
 $controller = new ControllerCadastroDeProjetos();
 $step = 0;
-if(isset($_GET['step'])){
+if (isset($_GET['step'])) {
     $step = filter_input(INPUT_GET, 'step', FILTER_SANITIZE_NUMBER_INT);
 }
 ?>
@@ -12,7 +12,7 @@ if(isset($_GET['step'])){
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><?= $controller->getPageTitle() ?></title>
-        <link rel="shortcut icon" type="image/png" href=<?= $controller->getIconPath() ?>/>
+        <link rel="shortcut icon" type="image/png" href="<?= $controller->getIconPath() ?>"/>
         <?php
         foreach ($controller->getStyles() as $style) {
             echo $style;
@@ -23,18 +23,16 @@ if(isset($_GET['step'])){
 
         <?php require "./modulos/menu-navegacao.php"; ?>
         <div class="container mt-3">
-            
-            <?php 
-                    switch ($step){
-                        case 1:
-                            require "./modulos/cadastro-dados-participantes.php";
-                            break;
-                        default:
-                            require "./modulos/cadastro-dados-projeto.php";
-                            break;
-                    }
-            
-            
+
+            <?php
+            switch ($step) {
+                case 1:
+                    require "./modulos/cadastro-dados-participantes.php";
+                    break;
+                default:
+                    require "./modulos/cadastro-dados-projeto.php";
+                    break;
+            }
             ?>          
         </div>
 
