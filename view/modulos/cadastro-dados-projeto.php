@@ -1,4 +1,4 @@
-<form action="cadastro-de-projetos.php?step=1" method="POST">
+<form action="cadastro-de-projetos.php?step=1" method="POST" enctype="multipart/form-data">
     <h2 class="mb-3">Cadastro do projeto</h2>
     <div class="form-group row">
         <label for="inputNome" class="col-sm-2 col-form-label">Nome</label>
@@ -26,7 +26,15 @@
         <label for="resumo">Resumo:</label>
         <textarea class="form-control" rows="10" name="resumo_do_projeto" required></textarea>
     </div>
+
+    <div class="form-group row ">
+        <label for="inputImagem" class="col-sm-2 col-form-label">Imagem</label>
+        <div class="col-sm-10 ">
+            <input type="file"  class="form-control " name="imagem" required>
+        </div>
+    </div>
     
+
     <div class="form-group row">
         <label for="inputNumeroParticipantes" class="col-sm-2 col-form-label">Nome</label>
         <div class="col-sm-10">
@@ -38,5 +46,5 @@
             <button type="submit" class="btn btn-primary">Proximo passo</button>
         </div>
     </div>
-    
+
 </form>  
