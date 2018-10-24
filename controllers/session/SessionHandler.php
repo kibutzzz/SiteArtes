@@ -2,6 +2,8 @@
 
 class Session {
     
+    private $url;
+            
     function __construct() {
         session_start();
     }
@@ -16,6 +18,14 @@ class Session {
     
     function destroy() {
         session_destroy();
+    }
+    
+    function setRedirectURL($url){
+        $this->url = $url;
+    }
+    
+    function getRedirectURL(){
+        return $this->url;
     }
 }
 
