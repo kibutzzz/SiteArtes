@@ -97,7 +97,6 @@ Class Connection {
                     . $member_emails[$i] . "', "
                     . ($i == 0 ? 1 : 0) . ", "
                     . $last_id . "); ";
-            var_dump($this->sql);
             $this->executeQuery();
         }
     }
