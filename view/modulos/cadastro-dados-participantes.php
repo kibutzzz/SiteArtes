@@ -1,11 +1,11 @@
 <?php
-
+var_dump($_FILES);
 ?>
 <form action="../controllers/form-handlers/cadastro-de-projetos.php" method="post">
-      <input type="hidden" name="nome_do_projeto" value="<?=$_POST['nome_do_projeto']?>">
+    <input type="hidden" name="nome_do_projeto" value="<?=$_POST['nome_do_projeto']?>">
     <input type="hidden" name="turma_do_projeto" value="<?=$_POST['turma_do_projeto']?>">
     <input type="hidden" name="resumo_do_projeto" value="<?=$_POST['resumo_do_projeto']?>">
-
+    <input type="hidden" name="imagem" value="<?=$_FILES["imagem"]?>">
     <?php
     for ($i = 0; $i < filter_input(INPUT_POST, 'numero_de_participantes'); $i ++) {
         ?>

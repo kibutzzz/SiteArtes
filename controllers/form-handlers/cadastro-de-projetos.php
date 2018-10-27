@@ -1,5 +1,6 @@
 <?php
 var_dump($_POST);
+var_dump($_FILES);
 
 $nome_do_projeto = filter_input(INPUT_POST, 'nome_do_projeto', FILTER_SANITIZE_SPECIAL_CHARS);
 $resumo_do_projeto = filter_input(INPUT_POST, 'resumo_do_projeto', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -17,4 +18,4 @@ $connection->registerProject($nome_do_projeto,
         $email_dos_participantes);
 $connection->closeConnection();
 
-header("location: ../../view/pagina-inicial.php");
+//header("location: ../../view/pagina-inicial.php");
