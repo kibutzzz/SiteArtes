@@ -17,6 +17,7 @@ Class Connection {
         define("TABLE_PROJETOS", 'projetos');
         define("TABLE_ADMINISTRADOR", "administrador");
         define("TABLE_PARTICIPANTES", "participantes");
+        define("TABLE_IMAGENS", "imagens");
 
 //        projetos columns
         define("PROJETOS_NOME", 'nome');
@@ -35,6 +36,11 @@ Class Connection {
 //        admin columns
         define("ADMINISTRADOR_USUARIO", "usuario");
         define("ADMINISTRADOR_SENHA", "senha");
+
+//        imagens columns
+        define("IMAGENS_PROJETOS_ID", "projetos_id");
+        define("IMAGENS_IMAGEM", "imagem");
+        define("IMAGENS_TIPO", "tipo");
 
 
         $this->connect();
@@ -70,7 +76,8 @@ Class Connection {
         $this->connection->close();
     }
 
-    public function registerProject($name, $abstract, $class, $member_names, $member_emails) {
+    public function registerProject($name, $abstract, $class, $member_names, $member_emails, $image, $image_type) {
+
         $this->sql = "INSERT INTO " . TABLE_PROJETOS . " ("
                 . PROJETOS_NOME . ", "
                 . PROJETOS_TURMA . ", "
@@ -99,6 +106,16 @@ Class Connection {
                     . $last_id . "); ";
             $this->executeQuery();
         }
+        
+        $this->sql = "INSERT INTO " . TABLE_IMAGENS . "("
+                . IMAGENS_PROJETOS_ID . ", "
+                . IMAGENS_IMAGEM . ", "
+                . IMAGENS_TIPO . ") values ( "
+                . $last_id . ", "
+                . file_get_contents($image) . ", "
+                . $image_type . "); ";
+        
+        $this->executeQuery();
     }
 
     public function getProjectById($id) {

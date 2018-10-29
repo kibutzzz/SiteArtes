@@ -1,11 +1,24 @@
 <?php
-var_dump($_FILES);
+$controller->session_handler->addValue("imagem", $_FILES["imagem"]);
+var_dump($_SESSION);
+
+$temporary_files_folder = "../files";
+if (!file_exists($temporary_files_folder)) {
+    mkdir($temporary_files_folder);
+}
+$path = $_SESSION["imagem"];
+$temporary_file = $temporary_files_folder ."/". basename($path["tmp_name"]) . "." . pathinfo($path['name'], PATHINFO_EXTENSION);
+
+move_uploaded_file($path["tmp_name"], $temporary_file);
+
+$controller->session_handler->addValue("image_path", $temporary_file);
+
 ?>
 <form action="../controllers/form-handlers/cadastro-de-projetos.php" method="post">
-    <input type="hidden" name="nome_do_projeto" value="<?=$_POST['nome_do_projeto']?>">
-    <input type="hidden" name="turma_do_projeto" value="<?=$_POST['turma_do_projeto']?>">
-    <input type="hidden" name="resumo_do_projeto" value="<?=$_POST['resumo_do_projeto']?>">
-    <input type="hidden" name="imagem" value="<?=$_FILES["imagem"]?>">
+    <input type="hidden" name="nome_do_projeto" value="<?= $_POST['nome_do_projeto'] ?>">
+    <input type="hidden" name="turma_do_projeto" value="<?= $_POST['turma_do_projeto'] ?>">
+    <input type="hidden" name="resumo_do_projeto" value="<?= $_POST['resumo_do_projeto'] ?>">
+<!--    <input type="hidden" name="imagem" value="<?= $_FILES["imagem"] ?>">-->
     <?php
     for ($i = 0; $i < filter_input(INPUT_POST, 'numero_de_participantes'); $i ++) {
         ?>
