@@ -8,6 +8,7 @@ class ControllerPaginaInicial extends Controller {
     
                 
         require_once '../model/Connection.php';
+        $this->addStyle("<link href='../style/pagina-inicial.css' rel='stylesheet'>");
         $this->connection = new Connection();        
     }
     
