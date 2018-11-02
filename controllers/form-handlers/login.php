@@ -4,9 +4,6 @@ if ($_POST) {
     $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_SPECIAL_CHARS);
     $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
 
-    var_dump($login);
-    var_dump($senha);
-
     require "../../model/Connection.php";
     $connection = new Connection();
 

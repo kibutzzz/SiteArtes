@@ -1,6 +1,6 @@
 <?php
 $controller->session_handler->addValue("imagem", $_FILES["imagem"]);
-var_dump($_SESSION);
+
 
 $temporary_files_folder = "../files";
 if (!file_exists($temporary_files_folder)) {
@@ -22,7 +22,7 @@ $controller->session_handler->addValue("image_path", $temporary_file);
     <?php
     for ($i = 0; $i < filter_input(INPUT_POST, 'numero_de_participantes'); $i ++) {
         ?>
-        <h3>participante <?= ($i + 1) ?></h3>
+        <h3 class="mt-3">participante <?= ($i + 1) ?></h3>
         <div class="form-group row">
             <label for="inputNomeParticipante" class="col-sm-2 col-form-label">Nome</label>
             <div class="col-sm-10">
