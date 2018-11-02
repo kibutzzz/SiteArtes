@@ -26,6 +26,11 @@ Class Connection {
         define("PROJETOS_SITUACAO", 'situacao');
         define("PROJETOS_DATA_EXPOSICAO", 'data_exposicao');
         define("PROJETOS_DATA_CADASTRO", 'data_cadastro');
+//        projetos types
+        define("PROJETOS_TIPO_PENDENTE", 0);
+        define("PROJETOS_TIPO_APROVADO", 1);
+        define("PROJETOS_TIPO_CONCLUIDO", 2);
+        define("PROJETOS_TIPO_REPROVADO", 3);
 
 //        participantes columns
         define("PARTICIPANTES_NOME", "nome");
@@ -41,7 +46,11 @@ Class Connection {
         define("IMAGENS_PROJETOS_ID", "projetos_id");
         define("IMAGENS_IMAGEM", "imagem");
         define("IMAGENS_TIPO", "tipo");
-
+        
+//       image types
+        define("IMAGEM_TIPO_RASCUNHO", 0);
+        define("IMAGEM_TIPO_EXPOSICAO", 1);
+        
 
         $this->connect();
     }
@@ -89,7 +98,7 @@ Class Connection {
                 . $name . "', '"
                 . $class . "', '"
                 . $abstract . "', "
-                . 0 . ", "
+                . PROJETOS_TIPO_PENDENTE . ", "
                 . "CURDATE());";
 
         $this->executeQuery();
@@ -150,6 +159,22 @@ Class Connection {
         return $this->executeQuery()->num_rows > 0;
     }
 
-//    TODO bucar dados do banco
-//    SELECT projetos.nome, projetos.situacao, participantes.nome FROM projetos INNER JOIN participantes ON participantes.projetos_id = projetos.id  WHERE participantes.lider = 1 
+    function selectAllApprovedProjects(){
+        $this->sql = "SELECT * FROM " . TABLE_PROJETOS 
+        . " WHERE " . PROJETOS_SITUACAO . " = " . PROJETOS_TIPO_APROVADO 
+        . " or " . PROJETOS_SITUACAO . " = " . PROJETOS_TIPO_CONCLUIDO . " ;";
+
+        return $this->executeQuery();
+    }
+
+    function selectAllProjectsIdentificationData() {
+        //    TODO bucar dados do banco
+        //    SELECT projetos.nome, projetos.situacao, participantes.nome FROM projetos INNER JOIN participantes ON participantes.projetos_id = projetos.id  WHERE participantes.lider = 1 
+        $this->sql = "SELECT projetos.nome AS nome_do_projeto , projetos.situacao, participantes.nome AS lider FROM projetos "
+        . "INNER JOIN participantes ON participantes.projetos_id = projetos.id  "
+        . "WHERE participantes.lider = 1";
+        
+        return $this->executeQuery();        
+    }
+
 }

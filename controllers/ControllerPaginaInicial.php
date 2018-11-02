@@ -2,7 +2,9 @@
 require "Controller.php";
 
 class ControllerPaginaInicial extends Controller {
+    
     private $connection;
+
     function __construct() {
         parent::__construct();
     
@@ -15,7 +17,7 @@ class ControllerPaginaInicial extends Controller {
     
     function getProjects(){
         $projects = [];
-        $res = $this->connection->selectAllProjects();
+        $res = $this->connection->selectAllApprovedProjects();
         
         while ($proj = $res->fetch_assoc()) {
             array_push($projects, $proj);
