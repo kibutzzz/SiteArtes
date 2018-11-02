@@ -26,23 +26,42 @@ $controller = new ControllerAdministracao();
                 <table class="table table-striped table-sm">
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>Nome</th>
                             <th>Situação</th>
                             <th>Lider</th>
-                            <th>adsadka</th>
+                            <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>substituir</td>
-                            <td>por</td>
-                            <td>dados</td>
-                            <td>do</td>
-                            <td>banco</td>
-                        </tr>
                         <?php
 //                        TODO consulta aos dados do banco
+                        foreach($controller->getAllProjectsForTable() as $project) {
+                        ?>
+                        <tr>
+                            <td><?= $project['nome_do_projeto']?></td>
+                            <td>
+                                <?php
+                                    switch($project['situacao']){
+                                        case PROJETOS_TIPO_PENDENTE:
+                                            echo "pendente";
+                                            break;
+                                        case PROJETOS_TIPO_CONCLUIDO:
+                                            echo "concluido";
+                                            break;
+                                        case PROJETOS_TIPO_APROVADO:
+                                            echo "aprovado";
+                                    }
+                                ?>
+                            </td>
+                            <td><?= $project['lider']?></td>
+                            <td>
+                                <form action="../view/mudar-projeto.php">
+                                    <button type="submit" class='btn btn-primary'>aprovar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php 
+                        }
                         ?>
                     </tbody>
                 </table>
