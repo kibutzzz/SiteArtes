@@ -15,8 +15,12 @@ $controller = new ControllerDetalhesProjeto();
         ?>
     </head>
     <body>
+        <?php
+            require "./modulos/menu-navegacao.php";
+        ?>
         <?php $project = $controller->getProject($_GET['id']);
-        var_dump($project)?>
+        // var_dump($project);
+        ?>
         <div class="container">
             <?php require "./modulos/detalhe-projeto.php"; ?>
         </div>
