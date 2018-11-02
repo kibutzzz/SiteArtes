@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 25-Set-2018 às 04:07
+-- Generation Time: 02-Nov-2018 às 18:17
 -- Versão do servidor: 10.1.34-MariaDB
 -- PHP Version: 5.6.37
 
@@ -25,13 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `administrador`
+--
+
+CREATE TABLE `administrador` (
+  `id` int(3) UNSIGNED NOT NULL,
+  `usuario` varchar(255) NOT NULL,
+  `senha` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `imagens`
 --
 
 CREATE TABLE `imagens` (
   `id` int(10) UNSIGNED NOT NULL,
   `projetos_id` int(10) UNSIGNED NOT NULL,
-  `imagem` mediumblob NOT NULL,
+  `imagem` longblob NOT NULL,
   `legenda` varchar(255) DEFAULT NULL,
   `tipo` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -71,6 +83,12 @@ CREATE TABLE `projetos` (
 --
 
 --
+-- Indexes for table `administrador`
+--
+ALTER TABLE `administrador`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `imagens`
 --
 ALTER TABLE `imagens`
@@ -95,6 +113,12 @@ ALTER TABLE `projetos`
 --
 
 --
+-- AUTO_INCREMENT for table `administrador`
+--
+ALTER TABLE `administrador`
+  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `imagens`
 --
 ALTER TABLE `imagens`
@@ -104,13 +128,13 @@ ALTER TABLE `imagens`
 -- AUTO_INCREMENT for table `participantes`
 --
 ALTER TABLE `participantes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `projetos`
 --
 ALTER TABLE `projetos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- Constraints for dumped tables
