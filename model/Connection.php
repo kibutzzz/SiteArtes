@@ -65,8 +65,9 @@ Class Connection {
     private function executeQuery() {
 
         $res = $this->connection->query($this->sql);
-        if ($this->connection->errno) {
-            return "Erro de query: " . $this->connection->error;
+        // var_dump($this->sql);
+        if ($this->connection->errno > 0) {
+            echo "Erro de query: " . $this->connection->error;
         }
 
         return $res;
@@ -107,13 +108,13 @@ Class Connection {
             $this->executeQuery();
         }
         
-        $this->sql = "INSERT INTO " . TABLE_IMAGENS . "("
+        $this->sql = "INSERT INTO " . TABLE_IMAGENS . " ( "
                 . IMAGENS_PROJETOS_ID . ", "
                 . IMAGENS_IMAGEM . ", "
-                . IMAGENS_TIPO . ") values ( "
+                . IMAGENS_TIPO . " ) values ( "
                 . $last_id . ", "
-                . file_get_contents($image) . ", "
-                . $image_type . "); ";
+                . "'" .$this->connection->real_escape_string(file_get_contents($image)) . "', "
+                . "'" .$image_type . "'); ";
         
         $this->executeQuery();
     }
