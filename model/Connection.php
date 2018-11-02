@@ -137,6 +137,8 @@ Class Connection {
 
         $projectInfo["member_details"] = $memberInfo;
 
+        $this->sql = "SELECT * FROM " . TABLE_IMAGENS . " WHERE ". IMAGENS_PROJETOS_ID ." = $id;";
+        $projectInfo["image"] = $this->executeQuery()->fetch_assoc();
         return $projectInfo;
     }
 
