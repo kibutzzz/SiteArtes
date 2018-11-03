@@ -33,6 +33,7 @@ Class Connection {
         define("PROJETOS_TIPO_REPROVADO", 3);
 
 //        participantes columns
+        define("PARTICIPANTES_ID", "id");
         define("PARTICIPANTES_NOME", "nome");
         define("PARTICIPANTES_EMAIL", "email");
         define("PARTICIPANTES_LIDER", "lider");
@@ -198,4 +199,11 @@ Class Connection {
         return $this->executeQuery();
     }
 
+    function updateMemberInfo($id, $name, $email){
+        $this->sql = "UPDATE " . TABLE_PARTICIPANTES
+                    . " SET " . PARTICIPANTES_NOME . " = '$name', " . PARTICIPANTES_EMAIL . " = '$email' " 
+                    . "WHERE " . PARTICIPANTES_ID . " = $id";
+        
+        $this->executeQuery();
+    }
 }
