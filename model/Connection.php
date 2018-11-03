@@ -162,7 +162,8 @@ Class Connection {
     function selectAllApprovedProjects(){
         $this->sql = "SELECT * FROM " . TABLE_PROJETOS 
         . " WHERE " . PROJETOS_SITUACAO . " = " . PROJETOS_TIPO_APROVADO 
-        . " or " . PROJETOS_SITUACAO . " = " . PROJETOS_TIPO_CONCLUIDO . " ;";
+        . " or " . PROJETOS_SITUACAO . " = " . PROJETOS_TIPO_CONCLUIDO 
+        . " LIMIT 50;";
 
         return $this->executeQuery();
     }
@@ -170,9 +171,10 @@ Class Connection {
     function selectAllProjectsIdentificationData() {
         //    TODO bucar dados do banco
         //    SELECT projetos.nome, projetos.situacao, participantes.nome FROM projetos INNER JOIN participantes ON participantes.projetos_id = projetos.id  WHERE participantes.lider = 1 
-        $this->sql = "SELECT projetos.nome AS nome_do_projeto , projetos.situacao, participantes.nome AS lider FROM projetos "
+        $this->sql = "SELECT projetos.id, projetos.nome AS nome_do_projeto , projetos.situacao, participantes.nome AS lider FROM projetos "
         . "INNER JOIN participantes ON participantes.projetos_id = projetos.id  "
-        . "WHERE participantes.lider = 1";
+        . "WHERE participantes.lider = 1 "
+        . "LIMIT 50";
         
         return $this->executeQuery();        
     }
