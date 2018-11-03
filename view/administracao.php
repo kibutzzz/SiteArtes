@@ -55,8 +55,9 @@ $controller = new ControllerAdministracao();
                             </td>
                             <td><?= $project['lider']?></td>
                             <td>
-                                <form action="../view/mudar-projeto.php">
-                                    <button type="submit" class='btn btn-primary'>aprovar</button>
+                                <form action="../view/mudar-projeto.php" method="POST">
+                                    <input type="hidden" name="id" value="<?= $project['id'];?>">
+                                    <button type="submit" class='btn btn-primary'>Editar</button>
                                 </form>
                             </td>
                         </tr>
