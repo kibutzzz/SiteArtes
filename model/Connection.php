@@ -179,4 +179,23 @@ Class Connection {
         return $this->executeQuery();        
     }
 
+    function selectProjectInfoById($id){
+        $this->sql = "SELECT * FROM " . TABLE_PROJETOS . " WHERE id = $id; ";
+        
+        return $this->executeQuery();
+    }
+
+    function selectMembersInfoByProjectId($id){
+        $this->sql = "SELECT * FROM " . TABLE_PARTICIPANTES 
+                    . " WHERE " . PARTICIPANTES_PROJETOS_ID . " = $id";
+        
+        return $this->executeQuery();
+    }
+
+    function selectImagesByProjectId($id){
+        $this->sql = "SELECT * FROM ". TABLE_IMAGENS
+                    . " WHERE " . IMAGENS_PROJETOS_ID . " = $id";
+        return $this->executeQuery();
+    }
+
 }
