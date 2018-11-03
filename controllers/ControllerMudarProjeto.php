@@ -9,7 +9,11 @@ class ControllerMudarProjeto extends Controller {
 
     function __construct() {
         parent::__construct();
-    
+        $this->session_handler->setRedirectUrl(" ./pagina-inicial.php");
+        if(!$this->session_handler->getValue('logado')){
+            header("location: " . $this->session_handler->getRedirectUrl());
+        }
+        
         require_once '../model/Connection.php';
         $this->connection = new Connection();    
 
@@ -27,13 +31,13 @@ class ControllerMudarProjeto extends Controller {
         
         $res = $this->connection->selectMembersInfoByProjectId($id);
         while($member = $res->fetch_assoc()){
-            $projectInfo['members'] = $member;
+            array_push($projectInfo['members'], $member);
         }
 
         
         $res = $this->connection->selectImagesByProjectId($id);
         while($image = $res->fetch_assoc()){
-            $projectInfo['image'] = $image;
+            array_push($projectInfo['images'],  $image);
         }
                 
 
