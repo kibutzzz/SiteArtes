@@ -169,6 +169,14 @@ Class Connection {
         return $this->executeQuery();
     }
 
+    function countAllAprovedProjects(){
+        $this->sql = "SELECT count(*) FROM " . TABLE_PROJETOS 
+        . " WHERE " . PROJETOS_SITUACAO . " = " . PROJETOS_TIPO_APROVADO 
+        . " or " . PROJETOS_SITUACAO . " = " . PROJETOS_TIPO_CONCLUIDO ." ;";
+
+        return $this->executeQuery();
+    }
+
     function selectAllProjectsIdentificationData() {
         //    TODO bucar dados do banco
         //    SELECT projetos.nome, projetos.situacao, participantes.nome FROM projetos INNER JOIN participantes ON participantes.projetos_id = projetos.id  WHERE participantes.lider = 1 
@@ -206,4 +214,13 @@ Class Connection {
         
         $this->executeQuery();
     }
+
+    function updateImage($id, $image){
+        $this->sql = "UPDATE " . TABLE_IMAGENS 
+                    . " SET " . IMAGENS_IMAGEM . " = '" .$this->connection->real_escape_string(file_get_contents($image)) . "'" 
+                    . " WHERE id = $id;";
+        $this->executeQuery();
+        
+    }
+
 }
