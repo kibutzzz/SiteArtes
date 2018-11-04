@@ -29,5 +29,9 @@ class ControllerPaginaInicial extends Controller {
     function closeConnection() {
         $this->connection->closeConnection();
     }
+
+    function hasProjects(){
+        return $this->connection->countAllAprovedProjects()->fetch_assoc()['count(*)'] > 0;
+    }
     
 }
