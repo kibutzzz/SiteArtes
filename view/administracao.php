@@ -21,7 +21,7 @@ $controller = new ControllerAdministracao();
         require './modulos/menu-navegacao.php';
         ?>
         <div class="container mt-3">
-            <h2>Section title</h2>
+            <h2>Área Administrativa</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
