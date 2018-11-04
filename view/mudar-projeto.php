@@ -20,14 +20,14 @@ $controller = new ControllerMudarProjeto();
             require "./modulos/menu-navegacao.php";
                    
         ?>
-        <div class="container">
+        <div class="container mt-3">
             <?php 
                 $projectId = filter_input(INPUT_POST, "id", FILTER_SANITIZE_NUMBER_INT); 
                 $project = $controller->getAllInfoFromProjectId($projectId);
-                var_dump($project);
+                // var_dump($project);
                 require "./modulos/alterar-estado-projeto.php";
-                require "./modulos/alterar-dados-participantes.php";
                 require "./modulos/alterar-dados-projeto.php";
+                require "./modulos/alterar-dados-participantes.php";
                 require "./modulos/alterar-imagem.php";
 
             ?>
