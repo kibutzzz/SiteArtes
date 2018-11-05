@@ -217,8 +217,8 @@ Class Connection {
 
     function updateImage($id, $image){
         $this->sql = "UPDATE " . TABLE_IMAGENS 
-                    . " SET " . IMAGENS_IMAGEM . " = '" .$this->connection->real_escape_string(file_get_contents($image)) . "'" 
-                    . " WHERE id = $id;";
+                    . " SET " . IMAGENS_IMAGEM . " = '" . $this->connection->real_escape_string(file_get_contents($image)) . "' " 
+                    . " WHERE id = $id ;";
         $this->executeQuery();
         
     }
