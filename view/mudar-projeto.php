@@ -35,6 +35,11 @@ $controller = new ControllerMudarProjeto();
             
         </div>
         
-
+        <?php
+            foreach ($controller->getScripts() as $script) {
+                echo $script;
+            }
+            $controller->closeConnection();
+        ?>
     </body>
 </html>

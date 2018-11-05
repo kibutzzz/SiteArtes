@@ -28,33 +28,46 @@ $controller = new ControllerJingle();
             </audio>        
 
             <blockquote class="blockquote">
-                <p class="mb-0">
+                <p class="mb-3">
                 Se tem uma parede de cor diferente<br>
                 Pode confiar, vem desenhar (2x)<br>
                 </p>
-                <p class="mb-0">
+                <p class="mb-3">
                 A cor é preta, autorização foi revisada.<br>
                 Os alunos podem rabiscar sem medo.<br>
                 Passou pela da professora de artes.<br>
                 E você pode desenhar não tem nenhum segredo.<br>
                 </p>
-                <p class="mb-0">
+                <p class="mb-3">
                 Se tem uma parede de cor diferente<br>
                 Pode confiar, vem desenhar (2x)<br>
                 </p>
-                <p class="mb-0">
+                <p class="mb-3">
                 A parede tem uma lagartixa de identificação,<br>
                 Levando o melhor giz com toda a dedicação<br>
                 Em nosso projeto você pode confiar,<br>
                 A inspiração está presente em todo lugar.<br>
-                <p class="mb-0">
+                <p class="mb-3">
                 Se tem uma parede de cor diferente<br>
                 Pode confiar, vem desenhar (2x)<br>
                 </p>
             </blockquote>
-
+            <div class="container text-center">
+                <h4 class="mb-3">Autores:</h4>
+                <p>Julia Carolina Auler</p>
+                <p>Vinícius Silveira Mello</p>
+                <p>João Gabriel Hartmann</p>
+                <p>Eduardo de Cristo Meurer</p>
+                <p>Gabriel Jappe Lorenzeti</p>
+            </div>
         </div>
         
+        <?php
+            foreach ($controller->getScripts() as $script) {
+                echo $script;
+            }
+            
+        ?>
 
     </body>
 </html>

@@ -27,7 +27,15 @@ $controller = new ControllerFlyer();
             <img class="img-fluid col-md-4" src="../raw/flyer2.jpg" height="220" />
 
         </div>
-        
-
+        <div class="container text-center">
+            <h4 class="mb-3">Autor:</h4>
+            <p>Gabriel Jappe Lorenzeti</p>
+        </div>
+        <?php
+            foreach ($controller->getScripts() as $script) {
+                echo $script;
+            }
+            
+        ?>
     </body>
 </html>
