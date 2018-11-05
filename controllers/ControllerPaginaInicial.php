@@ -8,6 +8,8 @@ class ControllerPaginaInicial extends Controller {
     function __construct() {
         parent::__construct();
     
+        $this->setPageTitle("Pagina inicial | A parede");  
+
                 
         require_once '../model/Connection.php';
         $this->addStyle("<link href='../style/pagina-inicial.css' rel='stylesheet'>");
