@@ -7,7 +7,7 @@ if ($_POST) {
     require "../../model/Connection.php";
     $connection = new Connection();
 
-    if ($connection->check_login($login, $senha)) {
+    if ($connection->check_login($login, md5($senha))) {
         require "../session/SessionHandler.php";
         $session_handler = new Session();
         $session_handler->addValue('login', $login);
