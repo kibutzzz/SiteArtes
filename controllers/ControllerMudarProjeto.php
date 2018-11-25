@@ -45,4 +45,7 @@ class ControllerMudarProjeto extends Controller {
 
     }
 
+    function closeConnection() {
+        $this->connection->closeConnection();
+    }
 }
