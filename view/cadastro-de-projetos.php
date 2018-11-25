@@ -35,7 +35,9 @@ if (isset($_GET['step'])) {
             }
             ?>          
         </div>
-
+        <div class="container">
+            <p>Ao se cadastrar no projeto você concorda com as <a href="https://docs.google.com/document/d/1tUc9BypTQmDSbhB7aUbSrPbkGrOSJ6GI3bosB_QF_Nc/edit?usp=sharing" target="_blank">regras do projeto</a></p>
+        </div>
     </div>
 </body>
 <?php
